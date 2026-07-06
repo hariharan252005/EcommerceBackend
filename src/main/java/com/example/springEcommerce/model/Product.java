@@ -17,7 +17,7 @@ public class Product {
     @NotNull
     private Double price;
     private String category;
-    private String description;
+    private String imageUrl;
 
     public Product(){
 
@@ -55,12 +55,12 @@ public class Product {
         this.category = category;
     }
 
-    public String getDescription() {
-        return description;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", category='" + category + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + imageUrl + '\'' +
                 '}';
     }
 }

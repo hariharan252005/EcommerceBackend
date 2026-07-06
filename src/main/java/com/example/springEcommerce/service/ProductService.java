@@ -21,6 +21,9 @@ public class ProductService {
     public Product addProduct(Product p){
         return repo.save(p);
     }
+    public List<Product> addMoreProduct(List<Product> p){
+        return repo.saveAll(p);
+    }
     public List<Product> getAllProduct(){
         return repo.findAll();
     }
@@ -43,7 +46,7 @@ public class ProductService {
             existingProduct.setName(product.getName());
             existingProduct.setPrice(product.getPrice());
             existingProduct.setCategory(product.getCategory());
-            existingProduct.setDescription(product.getDescription());
+            existingProduct.setImageUrl(product.getImageUrl());
             return repo.save(existingProduct);
         }
         return null;
@@ -64,5 +67,9 @@ public class ProductService {
 
     public List<Product> findByCategoryAndName(String category, String name) {
         return repo.findByCategoryAndName(category,name);
+    }
+
+    public void deleteAll() {
+        repo.deleteAll();
     }
 }

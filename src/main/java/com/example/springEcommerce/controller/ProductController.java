@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -23,6 +24,10 @@ public class ProductController {
     @PostMapping
     public Product addProduct(@Valid @RequestBody Product p){
         return service.addProduct(p);
+    }
+    @PostMapping("/bulk")
+    public List<Product> addMoreProduct(@RequestBody List<Product> p){
+        return service.addMoreProduct(p);
     }
     @GetMapping("/find/id/{id}")
     public Product findById(@PathVariable int id){
@@ -66,5 +71,10 @@ public class ProductController {
     @GetMapping("/price/{min}/{max}")
     public List<Product> getProductBetweenPrice(@PathVariable Double min,@PathVariable Double max){
         return service.getProductsBetweenPrice(min,max);
+    }
+    @DeleteMapping("/deleteall")
+    public String deleteAllProducts() {
+        service.deleteAll();
+        return "All products deleted successfully";
     }
 }
