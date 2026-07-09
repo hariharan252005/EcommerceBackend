@@ -31,18 +31,18 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allow all Vercel URLs including preview deployments
         config.setAllowedOriginPatterns(List.of(
                 "http://localhost:3000",
-                "https://ecommerce-frontend-q4si.vercel.app",
-                "https://*.vercel.app"   // ← allows ALL vercel preview URLs
+                "https://*.vercel.app"
         ));
 
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedMethods(List.of("*"));
         config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
+
         return source;
     }
 
