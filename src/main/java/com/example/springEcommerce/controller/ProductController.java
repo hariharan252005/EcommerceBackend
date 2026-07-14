@@ -12,6 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "https://ecommerce-frontend-git-main-hariharan252005s-projects.vercel.app"
+})
 public class ProductController {
 
     @Autowired
